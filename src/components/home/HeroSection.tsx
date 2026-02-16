@@ -246,37 +246,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenChat
         className="absolute bottom-0 left-0 right-0 z-30"
       >
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#40C1C7]/50 to-transparent" />
-        <div className="bg-[#40C1C7]/90 backdrop-blur-lg md:bg-gradient-to-r md:from-[#40C1C7] md:via-[#40C1C7]/95 md:to-[#40C1C7] py-6 md:py-8 shadow-2xl relative overflow-hidden group">
+        <div className="bg-[#40C1C7]/90 backdrop-blur-lg md:bg-gradient-to-r md:from-[#40C1C7] md:via-[#40C1C7]/95 md:to-[#40C1C7] py-3 md:py-4 shadow-2xl relative overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-x-reverse divide-white/20">
               <div className="text-center group/stat hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-center justify-center gap-2 text-white mb-1">
-                   <Gavel size={20} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
-                   <span className="text-3xl font-black tabular-nums">250+</span>
+                <div className="flex items-center justify-center gap-1.5 text-white mb-0.5">
+                   <Gavel size={16} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
+                   <span className="text-xl md:text-2xl font-black tabular-nums">250+</span>
                 </div>
-                <p className="text-white/90 text-sm font-medium">مزاد نشط</p>
+                <p className="text-white/90 text-xs md:text-sm font-medium">مزاد نشط</p>
               </div>
               <div className="text-center group/stat hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-center justify-center gap-2 text-white mb-1">
-                   <Users size={20} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
-                   <span className="text-3xl font-black tabular-nums">10K+</span>
+                <div className="flex items-center justify-center gap-1.5 text-white mb-0.5">
+                   <Users size={16} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
+                   <span className="text-xl md:text-2xl font-black tabular-nums">10K+</span>
                 </div>
-                <p className="text-white/90 text-sm font-medium">مستخدم مسجل</p>
+                <p className="text-white/90 text-xs md:text-sm font-medium">مستخدم مسجل</p>
               </div>
               <div className="text-center group/stat hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-center justify-center gap-2 text-white mb-1">
-                   <TrendingUp size={20} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
-                   <span className="text-3xl font-black tabular-nums">500+</span>
+                <div className="flex items-center justify-center gap-1.5 text-white mb-0.5">
+                   <TrendingUp size={16} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
+                   <span className="text-xl md:text-2xl font-black tabular-nums">500+</span>
                 </div>
-                <p className="text-white/90 text-sm font-medium">شريك عقاري</p>
+                <p className="text-white/90 text-xs md:text-sm font-medium">شريك عقاري</p>
               </div>
               <div className="text-center group/stat hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-center justify-center gap-2 text-white mb-1">
-                   <ShieldCheck size={20} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
-                   <span className="text-3xl font-black tabular-nums">%100</span>
+                <div className="flex items-center justify-center gap-1.5 text-white mb-0.5">
+                   <ShieldCheck size={16} className="opacity-80 group-hover/stat:scale-110 transition-transform" />
+                   <span className="text-xl md:text-2xl font-black tabular-nums">%100</span>
                 </div>
-                <p className="text-white/90 text-sm font-medium">نسبة الأمان</p>
+                <p className="text-white/90 text-xs md:text-sm font-medium">نسبة الأمان</p>
               </div>
             </div>
           </div>

@@ -23,7 +23,6 @@ import {
   ChevronLeft,
   HelpCircle,
   Brain,
-  Bell
 } from 'lucide-react';
 
 interface DashboardSidebarProps {
@@ -92,12 +91,12 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
         {/* Sidebar Header */}
         <div className="p-6 pt-6 flex items-center justify-between border-b border-gray-100/50">
           <div className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-[#0F172A] rounded-xl flex items-center justify-center text-[#D4AF37] shadow-lg shadow-gray-900/10 border border-[#1e293b]">
+             <div className="w-10 h-10 bg-[#2B3D50] rounded-xl flex items-center justify-center text-[#47CCD0] shadow-lg shadow-gray-900/10 border border-[#1e293b]">
                <LayoutDashboard size={20} />
              </div>
              <div>
-               <h2 className="text-lg font-black text-[#0F172A] leading-tight font-serif tracking-wide">Mzadat</h2>
-               <p className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest">Premium Auctions</p>
+               <h2 className="text-lg font-black text-[#2B3D50] leading-tight font-serif tracking-wide">Mzadat</h2>
+               <p className="text-[10px] text-[#47CCD0] font-bold uppercase tracking-widest">Premium Auctions</p>
              </div>
           </div>
           <button onClick={onClose} className="lg:hidden text-gray-400 hover:text-red-500 transition-colors p-1 rounded-lg hover:bg-red-50">
@@ -114,17 +113,17 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
               onClick={() => { onTabChange(item.id); onClose(); }}
               className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold transition-all group ${
                 activeTab === item.id 
-                  ? 'bg-[#0F172A] text-[#D4AF37] shadow-lg shadow-gray-900/20 border border-[#1e293b]' 
-                  : 'text-gray-500 hover:bg-gray-50 hover:text-[#0F172A]'
+                  ? 'bg-[#2B3D50] text-[#47CCD0] shadow-lg shadow-gray-900/20 border border-[#1e293b]' 
+                  : 'text-gray-500 hover:bg-gray-50 hover:text-[#2B3D50]'
               }`}
             >
               <div className="flex items-center gap-3">
                 {React.cloneElement(item.icon as React.ReactElement, { 
-                  className: activeTab === item.id ? 'text-[#D4AF37]' : 'text-gray-400 group-hover:text-[#0F172A]' 
+                  className: activeTab === item.id ? 'text-[#47CCD0]' : 'text-gray-400 group-hover:text-[#2B3D50]' 
                 })}
                 {item.label}
               </div>
-              {activeTab === item.id && <ChevronLeft size={16} className="text-[#D4AF37]" />}
+              {activeTab === item.id && <ChevronLeft size={16} className="text-[#47CCD0]" />}
             </button>
           ))}
           
@@ -200,9 +199,9 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               >
                 <Menu size={20} />
               </button>
-              <h1 className="text-lg font-black text-[#0F172A]">لوحة التحكم</h1>
+              <h1 className="text-lg font-black text-[#2B3D50]">لوحة التحكم</h1>
            </div>
-           <div className="w-8 h-8 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center text-[#0F766E] font-bold text-xs">
+           <div className="w-8 h-8 rounded-full bg-[#F8FAFB] border border-[#E1E8ED] flex items-center justify-center text-[#47CCD0] font-bold text-xs">
               MA
            </div>
         </header>
@@ -211,7 +210,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         <div className="hidden lg:flex items-center justify-between py-5 px-8 bg-white border-b border-gray-200/60 sticky top-0 z-30 shadow-sm">
            {/* Left (RTL Right) */}
            <div>
-              <h1 className="text-xl font-black text-[#0F172A]">
+              <h1 className="text-xl font-black text-[#2B3D50]">
                  {activeTab === 'overview' ? 'نظرة عامة' : 
                   activeTab === 'wallet' ? 'المحفظة' : 
                   activeTab === 'my-bids' ? 'مزايداتي' : 'لوحة التحكم'}
@@ -226,8 +225,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                     onClick={() => onSwitchRole('individual')}
                     className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${
                        role === 'individual' || role === 'admin'
-                          ? 'bg-[#0F172A] text-[#D4AF37] shadow-md transform scale-105' 
-                          : 'text-gray-500 hover:text-[#0F172A]'
+                          ? 'bg-[#2B3D50] text-[#47CCD0] shadow-md transform scale-105' 
+                          : 'text-gray-500 hover:text-[#2B3D50]'
                     }`}
                  >
                     أفراد
@@ -236,8 +235,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                     onClick={() => onSwitchRole('corporate')}
                     className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${
                        role === 'corporate' || role === 'broker'
-                          ? 'bg-[#0F172A] text-[#D4AF37] shadow-md transform scale-105' 
-                          : 'text-gray-500 hover:text-[#0F172A]'
+                          ? 'bg-[#2B3D50] text-[#47CCD0] shadow-md transform scale-105' 
+                          : 'text-gray-500 hover:text-[#2B3D50]'
                     }`}
                  >
                     شركات
@@ -247,7 +246,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
            {/* Right (RTL Left) Actions */}
            <div className="flex items-center gap-5">
-              <button className="relative p-2.5 rounded-xl text-gray-400 hover:bg-gray-50 hover:text-[#0F172A] transition-all border border-transparent hover:border-gray-100">
+              <button className="relative p-2.5 rounded-xl text-gray-400 hover:bg-gray-50 hover:text-[#2B3D50] transition-all border border-transparent hover:border-gray-100">
                  <Bell size={22} />
                  <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
               </button>
@@ -256,10 +255,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
               <div className="flex items-center gap-3 cursor-pointer group">
                  <div className="text-left hidden xl:block">
-                    <p className="text-sm font-bold text-[#0F172A] group-hover:text-[#D4AF37] transition-colors">محمد أحمد</p>
+                    <p className="text-sm font-bold text-[#2B3D50] group-hover:text-[#47CCD0] transition-colors">محمد أحمد</p>
                     <p className="text-[10px] text-gray-400 font-medium">عضوية ذهبية</p>
                  </div>
-                 <div className="w-11 h-11 rounded-full p-0.5 border-2 border-[#D4AF37] bg-white shadow-sm group-hover:shadow-md transition-all">
+                 <div className="w-11 h-11 rounded-full p-0.5 border-2 border-[#47CCD0] bg-white shadow-sm group-hover:shadow-md transition-all">
                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User" className="w-full h-full object-cover rounded-full" />
                  </div>
               </div>

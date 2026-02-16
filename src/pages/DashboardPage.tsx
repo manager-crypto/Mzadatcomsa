@@ -9,35 +9,34 @@ import {
   Activity, 
   Clock, 
   CheckCircle, 
-  XCircle,
-  AlertCircle,
-  Building,
-  Car,
-  FileText,
-  Wallet,
-  LayoutGrid,
-  Gem,
-  ArrowRight,
-  Plus,
-  Search,
-  Filter,
-  MoreVertical,
-  CreditCard,
-  Shield,
-  Star,
-  Bell,
-  Building2,
-  FileBarChart,
-  Download,
-  Zap,
-  Heart,
-  Briefcase,
-  Hash,
-  Home,
-  Settings
+  XCircle, 
+  AlertCircle, 
+  Building, 
+  Car, 
+  FileText, 
+  Wallet, 
+  LayoutGrid, 
+  Gem, 
+  ArrowRight, 
+  Plus, 
+  Search, 
+  Filter, 
+  MoreVertical, 
+  CreditCard, 
+  Shield, 
+  Star, 
+  Bell, 
+  Building2, 
+  FileBarChart, 
+  Download, 
+  Zap, 
+  Heart, 
+  Briefcase, 
+  Hash, 
+  Home, 
+  Settings 
 } from 'lucide-react';
 import { SmartManagementContent } from '../components/dashboard/SmartManagementContent';
-import { SettingsContent } from '../components/dashboard/SettingsContent';
 import { 
   BarChart, 
   Bar, 
@@ -50,10 +49,10 @@ import {
   Area, 
   PieChart, 
   Pie, 
-  Cell,
-  LineChart,
-  Line,
-  Legend
+  Cell, 
+  LineChart, 
+  Line, 
+  Legend 
 } from 'recharts';
 
 interface DashboardPageProps {
@@ -73,7 +72,7 @@ const revenueData = [
 
 const pieData = [
   { name: 'عقارات', value: 45, color: '#0F766E' },
-  { name: 'سيارات', value: 30, color: '#40C1C7' },
+  { name: 'سيارات', value: 30, color: '#47CCD0' },
   { name: 'لوحات', value: 15, color: '#2DD4BF' },
   { name: 'أخرى', value: 10, color: '#CCFBF1' },
 ];
@@ -159,17 +158,17 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
       {/* KPIs Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Wallet Balance - Navy Card */}
-        <div className="bg-[#0F172A] p-6 rounded-2xl text-white relative overflow-hidden shadow-xl shadow-[#0F172A]/10 group">
+        <div className="bg-[#2B3D50] p-6 rounded-2xl text-white relative overflow-hidden shadow-xl shadow-[#2B3D50]/10 group">
            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-white/10"></div>
            <div className="relative z-10">
               <div className="flex items-center gap-3 mb-4">
-                 <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#D4AF37] border border-white/5">
+                 <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#47CCD0] border border-white/5">
                     <Wallet size={20} />
                  </div>
                  <span className="text-gray-300 font-medium text-sm">رصيد المحفظة</span>
               </div>
               <h3 className="text-4xl font-black text-white mb-2 font-mono dir-ltr text-right tracking-tight">
-                {isCorporate ? '1,250,000.00' : '25,400.00'} <span className="text-sm font-sans text-[#D4AF37] font-bold">SAR</span>
+                {isCorporate ? '1,250,000.00' : '25,400.00'} <span className="text-sm font-sans text-[#47CCD0] font-bold">SAR</span>
               </h3>
               <p className="text-xs text-gray-400 mt-2 flex items-center gap-1 bg-white/5 w-fit px-2 py-1 rounded-lg">
                  <ArrowRight size={12} className="rotate-180 text-green-400" />
@@ -179,28 +178,28 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* Active Bids - White Card */}
-        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#D4AF37]/30 transition-all group relative overflow-hidden">
-           <div className="absolute top-0 left-0 w-1 h-full bg-[#0F172A] transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"></div>
+        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#47CCD0]/30 transition-all group relative overflow-hidden">
+           <div className="absolute top-0 left-0 w-1 h-full bg-[#2B3D50] transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"></div>
            <div className="flex justify-between items-start mb-4">
-              <div className="w-10 h-10 rounded-xl bg-[#FFF8E1] flex items-center justify-center text-[#D4AF37] group-hover:scale-110 transition-transform border border-[#D4AF37]/20">
+              <div className="w-10 h-10 rounded-xl bg-[#F8FAFB] flex items-center justify-center text-[#47CCD0] group-hover:scale-110 transition-transform border border-[#47CCD0]/20">
                  <Gavel size={20} />
               </div>
               <span className="bg-green-50 text-green-600 text-[10px] font-bold px-2 py-1 rounded-full border border-green-100">نشط حالياً</span>
            </div>
-           <h3 className="text-4xl font-black text-[#0F172A] mb-1">{isCorporate ? '24' : '8'}</h3>
+           <h3 className="text-4xl font-black text-[#2B3D50] mb-1">{isCorporate ? '24' : '8'}</h3>
            <p className="text-sm text-gray-500 font-medium">مزايدات قيد التنفيذ</p>
         </div>
 
         {/* Compliance Status - White Card */}
-        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#D4AF37]/30 transition-all group relative overflow-hidden">
-           <div className="absolute top-0 left-0 w-1 h-full bg-[#0F172A] transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"></div>
+        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#47CCD0]/30 transition-all group relative overflow-hidden">
+           <div className="absolute top-0 left-0 w-1 h-full bg-[#2B3D50] transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"></div>
            <div className="flex justify-between items-start mb-4">
               <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform border border-blue-100">
                  <Shield size={20} />
               </div>
               <span className="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded-full border border-blue-100">100% مكتمل</span>
            </div>
-           <h3 className="text-lg font-black text-[#0F172A] mb-1">حساب موثق</h3>
+           <h3 className="text-lg font-black text-[#2B3D50] mb-1">حساب موثق</h3>
            <p className="text-xs text-green-600 font-bold flex items-center gap-1">
               <CheckCircle size={14} /> متوافق مع الأنظمة
            </p>
@@ -215,11 +214,11 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
            {/* Corporate Services Hub */}
            <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm">
               <div className="flex items-center justify-between mb-6">
-                 <h3 className="font-bold text-[#0F172A] text-lg font-serif flex items-center gap-2">
-                    <Building2 size={20} className="text-[#D4AF37]" />
+                 <h3 className="font-bold text-[#2B3D50] text-lg font-serif flex items-center gap-2">
+                    <Building2 size={20} className="text-[#47CCD0]" />
                     خدمات الأعمال
                  </h3>
-                 <button className="text-xs font-bold text-gray-400 hover:text-[#0F172A]">إدارة الخدمات</button>
+                 <button className="text-xs font-bold text-gray-400 hover:text-[#2B3D50]">إدارة الخدمات</button>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                  {[
@@ -228,11 +227,11 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
                    { icon: Users, label: 'إدارة المستخدمين', desc: 'الصلاحيات والفرق' },
                    { icon: Gavel, label: 'مزايدة مجمعة', desc: 'استيراد من Excel' },
                  ].map((service, idx) => (
-                   <button key={idx} className="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-100 hover:border-[#D4AF37] hover:bg-gray-50 transition-all group text-center">
-                      <div className="w-10 h-10 rounded-lg bg-[#0F172A]/5 text-[#0F172A] flex items-center justify-center mb-3 group-hover:bg-[#0F172A] group-hover:text-[#D4AF37] transition-colors">
+                   <button key={idx} className="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-100 hover:border-[#47CCD0] hover:bg-gray-50 transition-all group text-center">
+                      <div className="w-10 h-10 rounded-lg bg-[#2B3D50]/5 text-[#2B3D50] flex items-center justify-center mb-3 group-hover:bg-[#2B3D50] group-hover:text-[#47CCD0] transition-colors">
                          <service.icon size={20} />
                       </div>
-                      <h4 className="font-bold text-sm text-[#0F172A] mb-1">{service.label}</h4>
+                      <h4 className="font-bold text-sm text-[#2B3D50] mb-1">{service.label}</h4>
                       <p className="text-[10px] text-gray-400">{service.desc}</p>
                    </button>
                  ))}
@@ -241,8 +240,8 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
 
            {/* Quick Financial Summary */}
            <div className="bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm">
-              <h3 className="font-bold text-[#0F172A] text-lg font-serif mb-4 flex items-center gap-2">
-                 <FileText size={20} className="text-[#D4AF37]" />
+              <h3 className="font-bold text-[#2B3D50] text-lg font-serif mb-4 flex items-center gap-2">
+                 <FileText size={20} className="text-[#47CCD0]" />
                  الفواتير والضرائب
               </h3>
               <div className="space-y-4">
@@ -269,12 +268,12 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
                           <p className="text-[10px] text-gray-400">تم السداد</p>
                        </div>
                     </div>
-                    <button className="text-gray-400 hover:text-[#0F172A]">
+                    <button className="text-gray-400 hover:text-[#2B3D50]">
                        <Download size={16} />
                     </button>
                  </div>
                  
-                 <button className="w-full py-2.5 mt-2 rounded-xl bg-[#0F172A] text-white text-xs font-bold hover:bg-gray-800 transition-colors">
+                 <button className="w-full py-2.5 mt-2 rounded-xl bg-[#2B3D50] text-white text-xs font-bold hover:bg-gray-800 transition-colors">
                     تحميل الكشف الضريبي
                  </button>
               </div>
@@ -286,12 +285,12 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
            {/* Explore Categories */}
            <div className="lg:col-span-8 bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm">
               <div className="flex items-center justify-between mb-6">
-                 <h3 className="font-bold text-[#0F172A] text-lg font-serif flex items-center gap-2">
-                    <Zap size={20} className="text-[#D4AF37] fill-[#D4AF37]" />
+                 <h3 className="font-bold text-[#2B3D50] text-lg font-serif flex items-center gap-2">
+                    <Zap size={20} className="text-[#47CCD0] fill-[#47CCD0]" />
                     استكشف الفرص
                  </h3>
                  <div className="flex gap-2">
-                    <button className="text-xs font-bold px-3 py-1 rounded-full bg-[#0F172A] text-white">الكل</button>
+                    <button className="text-xs font-bold px-3 py-1 rounded-full bg-[#2B3D50] text-white">الكل</button>
                     <button className="text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200">الأكثر طلباً</button>
                  </div>
               </div>
@@ -302,14 +301,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
                    { icon: Hash, label: 'لوحات', count: '80+', bg: 'bg-amber-100', text: 'text-amber-700' },
                    { icon: Gem, label: 'مقتنيات', count: '30+', bg: 'bg-purple-100', text: 'text-purple-700' },
                  ].map((cat, idx) => (
-                   <div key={idx} className="relative overflow-hidden rounded-xl p-4 border border-gray-100 hover:border-[#D4AF37] transition-all cursor-pointer group bg-gray-50 hover:bg-white">
+                   <div key={idx} className="relative overflow-hidden rounded-xl p-4 border border-gray-100 hover:border-[#47CCD0] transition-all cursor-pointer group bg-gray-50 hover:bg-white">
                       <div className={`w-10 h-10 rounded-full ${cat.bg} ${cat.text} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
                          <cat.icon size={20} />
                       </div>
                       <h4 className="font-bold text-gray-900">{cat.label}</h4>
                       <p className="text-xs text-gray-400 mt-1">{cat.count} مزاد</p>
                       <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <ArrowRight size={14} className="text-[#D4AF37] rotate-180" />
+                         <ArrowRight size={14} className="text-[#47CCD0] rotate-180" />
                       </div>
                    </div>
                  ))}
@@ -318,27 +317,27 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
 
            {/* Recommended For You */}
            <div className="lg:col-span-4 bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm">
-              <h3 className="font-bold text-[#0F172A] text-lg font-serif mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-[#2B3D50] text-lg font-serif mb-4 flex items-center gap-2">
                  <Heart size={20} className="text-red-500 fill-red-500" />
                  مرشحة لك
               </h3>
               <div className="space-y-4">
                  {[1, 2].map((item) => (
-                   <div key={item} className="flex gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#D4AF37] transition-all cursor-pointer group">
+                   <div key={item} className="flex gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#47CCD0] transition-all cursor-pointer group">
                       <img src={`https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=150&q=80`} className="w-20 h-20 rounded-lg object-cover" />
                       <div className="flex-1">
                          <div className="flex justify-between items-start">
-                            <span className="text-[10px] font-bold bg-[#0F172A] text-[#D4AF37] px-1.5 py-0.5 rounded">عقار</span>
+                            <span className="text-[10px] font-bold bg-[#2B3D50] text-[#47CCD0] px-1.5 py-0.5 rounded">عقار</span>
                             <span className="text-[10px] font-bold text-green-600 flex items-center gap-1">
                                <TrendingUp size={10} /> فرصة
                             </span>
                          </div>
                          <h4 className="font-bold text-gray-900 text-sm mt-1 leading-tight line-clamp-2">شقة فاخرة بإطلالة بحرية - جدة</h4>
-                         <p className="text-xs font-mono font-bold text-[#0F172A] mt-2">1,200,000 SAR</p>
+                         <p className="text-xs font-mono font-bold text-[#2B3D50] mt-2">1,200,000 SAR</p>
                       </div>
                    </div>
                  ))}
-                 <button className="w-full py-2 text-xs font-bold text-[#0F172A] border border-gray-200 rounded-lg hover:bg-gray-50">
+                 <button className="w-full py-2 text-xs font-bold text-[#2B3D50] border border-gray-200 rounded-lg hover:bg-gray-50">
                     عرض جميع الترشيحات
                  </button>
               </div>
@@ -349,11 +348,11 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
       {/* Active Auctions List */}
       <div className="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden">
          <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50/30">
-            <h3 className="font-bold text-[#0F172A] text-lg flex items-center gap-2 font-serif">
-               <span className="w-1.5 h-6 bg-[#D4AF37] rounded-full"></span>
+            <h3 className="font-bold text-[#2B3D50] text-lg flex items-center gap-2 font-serif">
+               <span className="w-1.5 h-6 bg-[#47CCD0] rounded-full"></span>
                المزادات الجارية
             </h3>
-            <button className="text-xs font-bold text-[#D4AF37] hover:text-[#0F172A] transition-colors flex items-center gap-1">
+            <button className="text-xs font-bold text-[#47CCD0] hover:text-[#2B3D50] transition-colors flex items-center gap-1">
                عرض الكل <ArrowRight size={14} className="rotate-180" />
             </button>
          </div>
@@ -377,18 +376,18 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
                     <tr key={item.id} className="hover:bg-gray-50/50 transition-colors group">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <img src={item.img} alt={item.title} className="w-12 h-12 rounded-lg object-cover shadow-sm border border-gray-100 group-hover:border-[#D4AF37]/50 transition-colors" />
+                          <img src={item.img} alt={item.title} className="w-12 h-12 rounded-lg object-cover shadow-sm border border-gray-100 group-hover:border-[#47CCD0]/50 transition-colors" />
                           <div>
-                             <p className="font-bold text-[#0F172A]">{item.title}</p>
+                             <p className="font-bold text-[#2B3D50]">{item.title}</p>
                              <p className="text-xs text-gray-400 mt-0.5">رقم المزاد: #{202400 + item.id}</p>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                         <p className="font-mono font-black text-[#0F172A] text-base">{item.bid} <span className="text-[10px] text-gray-400 font-sans">SAR</span></p>
+                         <p className="font-mono font-black text-[#2B3D50] text-base">{item.bid} <span className="text-[10px] text-gray-400 font-sans">SAR</span></p>
                       </td>
                       <td className="px-6 py-4">
-                         <div className="flex items-center gap-1.5 text-[#D4AF37] font-mono font-bold bg-[#FFF8E1] w-fit px-2.5 py-1 rounded-lg text-xs">
+                         <div className="flex items-center gap-1.5 text-[#F39C12] font-mono font-bold bg-[#FFF8E1] w-fit px-2.5 py-1 rounded-lg text-xs">
                             <Clock size={12} />
                             {item.time}
                          </div>
@@ -543,7 +542,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
         {/* Revenue Chart */}
         <div className="lg:col-span-2 bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="font-bold text-gray-900 text-lg">تحليل الإيرادات</h3>
+            <h3 className="font-bold text-gray-900 text-lg">الإيرادات</h3>
             <select className="bg-gray-50 border border-gray-200 rounded-lg text-sm px-3 py-1 outline-none text-gray-600">
               <option>آخر 6 أشهر</option>
               <option>آخر سنة</option>
@@ -627,8 +626,6 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
         </>
       ) : activeTab === 'smart-management' ? (
         <SmartManagementContent role={activeRole} />
-      ) : activeTab === 'settings' ? (
-        <SettingsContent />
       ) : (
         <div className="flex flex-col items-center justify-center h-[500px] bg-white rounded-3xl border border-dashed border-gray-200">
            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 mb-4">

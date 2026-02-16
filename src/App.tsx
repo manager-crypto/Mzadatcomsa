@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/layout/Header';
+import { HeaderEn } from './components/layout/HeaderEn';
 import { Footer } from './components/layout/Footer';
+import { FooterEn } from './components/layout/FooterEn';
 import { HomePage } from './pages/HomePage';
+import { HomePageEn } from './pages/HomePageEn';
 import { AuctionsPage } from './pages/AuctionsPage';
+import { AuctionsPageEn } from './pages/AuctionsPageEn';
 import { CarAuctionsPage } from './pages/CarAuctionsPage';
 import { CarDetailsPage } from './pages/CarDetailsPage';
 import { LiveCarAuctionPage } from './pages/LiveCarAuctionPage';
@@ -19,6 +23,7 @@ import { WalletPage } from './pages/WalletPage';
 import { TrainingPage } from './pages/TrainingPage';
 import { CareersPage } from './pages/CareersPage';
 import { LoginPage } from './pages/LoginPage';
+import { LoginPageEn } from './pages/LoginPageEn';
 import { SignupPage } from './pages/SignupPage';
 import { ReportVulnerabilityPage } from './pages/ReportVulnerabilityPage';
 import { NafathLoginPage } from './pages/NafathLoginPage';
@@ -27,7 +32,6 @@ import { NafathVerificationPage } from './pages/NafathVerificationPage';
 import { ReportAdIssuePage } from './components/pages/ReportAdIssuePage';
 import { ReportComplaintPage } from './components/pages/ReportComplaintPage';
 import { SmartAdvisor } from './components/chat/SmartAdvisor';
-import { AuthGuard } from './components/auth/AuthGuard';
 import { CookieConsent } from './components/layout/CookieConsent';
 
 import { LiveAuctionPage } from './pages/LiveAuctionPage';
@@ -35,14 +39,19 @@ import { AuctionDetailsPage } from './pages/AuctionDetailsPage';
 import { RegisterNowPage } from './pages/RegisterNowPage';
 import { RegistrationFlowPage } from './pages/RegistrationFlowPage';
 import { AddAdPage } from './pages/AddAdPage';
-import { AddAdIntroPage } from './pages/AddAdIntroPage';
 import { AddAuctionPage } from './pages/AddAuctionPage';
 import { DirectSalesPage } from './components/direct-sales/DirectSalesPage';
 import { DirectSaleDetailsPage } from './components/direct-sales/DirectSaleDetailsPage';
 import { FAQPage } from './pages/FAQPage';
+import { FAQPageEn } from './pages/FAQPageEn';
 import { SupportPage } from './pages/SupportPage';
+import { SupportPageEn } from './pages/SupportPageEn';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { ResidentialRentPage } from './pages/ResidentialRentPage';
+import { RiyadhRentPage } from './pages/RiyadhRentPage';
+import { RentPropertyDetailsPage } from './pages/RentPropertyDetailsPage';
 import { TermsPage } from './pages/TermsPage';
+import { TermsPageEn } from './pages/TermsPageEn';
 import { AuctionGuidePage } from './components/pages/AuctionGuidePage';
 import { BrokerageGuidePage } from './components/pages/BrokerageGuidePage';
 import { RequestBrokeragePage } from './components/pages/RequestBrokeragePage';
@@ -53,6 +62,8 @@ import { DailyRentPage } from './components/pages/DailyRentPage';
 import { BookingPage } from './pages/BookingPage';
 import { RequestsPage } from './pages/RequestsPage';
 import { CreateRequestPage } from './pages/CreateRequestPage';
+import { PlansPage } from './pages/PlansPage';
+import { PlansPageEn } from './pages/PlansPageEn';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -65,6 +76,7 @@ const App = () => {
   
   // AI Chat State
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   // Cursor State
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -87,9 +99,6 @@ const App = () => {
     return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
 
-  // Auto-scroll chat
-  // removed auto-scroll effect as it is handled in SmartAdvisor
-
   // Handle Page Navigation
   const handleNavigate = (page: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -105,7 +114,12 @@ const App = () => {
   const handlePropertyClick = (property: any) => {
     setSelectedProperty(property);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setCurrentPage('property-details');
+    // Check if we're on a rental page
+    if (currentPage === 'riyadh-rent' || currentPage === 'residential-rent') {
+      setCurrentPage('rent-property-details');
+    } else {
+      setCurrentPage('property-details');
+    }
   };
 
   const handleAuctionClick = (auction: any) => {
@@ -126,10 +140,11 @@ const App = () => {
     setCurrentPage('direct-sale-details');
   };
 
-  // Chat Function removed as it is handled in SmartAdvisor
+  // Determine language based on route suffix
+  const isEnglish = currentPage.endsWith('-en');
 
   return (
-    <div dir="rtl" className="min-h-screen bg-gray-50 text-gray-900 selection:bg-[#40C1C7] selection:text-white cursor-none" style={{ fontFamily: "'Noto Kufi Arabic', system-ui, -apple-system, sans-serif" }}>
+    <div dir={isEnglish ? "ltr" : "rtl"} className={`min-h-screen bg-white text-black selection:bg-[#47CCD0] selection:text-white cursor-none ${isEnglish ? 'font-sans' : ''}`} style={{ fontFamily: isEnglish ? "'Helvetica', 'Arial', sans-serif" : "'Noto Kufi Arabic', system-ui, -apple-system, sans-serif" }}>
       <style>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap');
@@ -138,7 +153,7 @@ const App = () => {
           ::-webkit-scrollbar { width: 8px; }
           ::-webkit-scrollbar-track { background: #f1f1f1; }
           ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
-          ::-webkit-scrollbar-thumb:hover { background: #40C1C7; }
+          ::-webkit-scrollbar-thumb:hover { background: #47CCD0; }
 
           @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -178,25 +193,33 @@ const App = () => {
 
       {/* --- CUSTOM CURSOR --- */}
       <div 
-        className="fixed top-0 left-0 w-3 h-3 bg-[#40C1C7] rounded-full pointer-events-none z-[9999] transition-transform duration-100 ease-out mix-blend-difference"
+        className="fixed top-0 left-0 w-3 h-3 bg-[#47CCD0] rounded-full pointer-events-none z-[9999] transition-transform duration-100 ease-out mix-blend-difference"
         style={{
           transform: `translate(${cursorPosition.x - 6}px, ${cursorPosition.y - 6}px) scale(${cursorVariant === 'hover' ? 0 : 1})`
         }}
       />
       <div 
-        className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out border border-[#40C1C7] ${cursorVariant === 'hover' ? 'w-12 h-12 bg-[#40C1C7]/10 border-[#40C1C7]' : 'w-8 h-8 border-[#40C1C7]/50'}`}
+        className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out border border-[#47CCD0] ${cursorVariant === 'hover' ? 'w-12 h-12 bg-[#47CCD0]/10 border-[#47CCD0]' : 'w-8 h-8 border-[#47CCD0]/50'}`}
         style={{
           transform: `translate(${cursorPosition.x - (cursorVariant === 'hover' ? 24 : 16)}px, ${cursorPosition.y - (cursorVariant === 'hover' ? 24 : 16)}px)`
         }}
       />
       
-      {currentPage !== 'login' && (
-        <Header 
-          onNavigate={handleNavigate} 
-          currentPage={currentPage} 
-          onOpenLogin={() => handleNavigate('login')}
-          isLoggedIn={isLoggedIn}
-        />
+      {currentPage !== 'login' && currentPage !== 'login-en' && (
+        isEnglish ? (
+          <HeaderEn 
+            onNavigate={handleNavigate} 
+            currentPage={currentPage} 
+            onOpenLogin={() => handleNavigate('login-en')}
+          />
+        ) : (
+          <Header 
+            onNavigate={handleNavigate} 
+            currentPage={currentPage} 
+            onOpenLogin={() => handleNavigate('login')}
+            isLoggedIn={isLoggedIn}
+          />
+        )
       )}
 
       {/* Page Content */}
@@ -209,7 +232,16 @@ const App = () => {
             onNavigate={handleNavigate}
           />
         )}
+        {currentPage === 'home-en' && (
+          <HomePageEn 
+            onOpenChat={() => setIsChatOpen(true)} 
+            cursorPosition={cursorPosition} 
+            onCitySelect={handleCitySelect}
+            onNavigate={handleNavigate}
+          />
+        )}
         {currentPage === 'auctions' && <AuctionsPage onNavigate={handleNavigate} onAuctionClick={handleAuctionClick} />}
+        {currentPage === 'auctions-en' && <AuctionsPageEn onNavigate={handleNavigate} onAuctionClick={handleAuctionClick} />}
         {currentPage === 'live-auction' && <LiveAuctionPage onNavigate={handleNavigate} />}
         {currentPage === 'auction-details' && <AuctionDetailsPage onNavigate={handleNavigate} auction={selectedAuction} />}
         {currentPage === 'car-auctions' && <CarAuctionsPage onNavigate={handleNavigate} onCarClick={handleCarClick} />}
@@ -223,14 +255,10 @@ const App = () => {
         {currentPage === 'register-now' && <RegisterNowPage onNavigate={handleNavigate} />}
         {currentPage === 'registration-flow' && <RegistrationFlowPage onNavigate={handleNavigate} />}
         {currentPage === 'add-ad' && (
-          <AuthGuard isLoggedIn={isLoggedIn} onOpenLogin={() => handleNavigate('login')} onNavigate={handleNavigate} mode="ad">
-            <AddAdPage onNavigate={handleNavigate} />
-          </AuthGuard>
+          <AddAdPage onNavigate={handleNavigate} />
         )}
         {currentPage === 'add-auction' && (
-           <AuthGuard isLoggedIn={isLoggedIn} onOpenLogin={() => handleNavigate('login')} onNavigate={handleNavigate} mode="auction">
-             <AddAuctionPage onNavigate={handleNavigate} />
-           </AuthGuard>
+          <AddAuctionPage onNavigate={handleNavigate} />
         )}
         {currentPage === 'auction-guide' && <AuctionGuidePage onNavigate={handleNavigate} />}
         {currentPage === 'brokerage-guide' && <BrokerageGuidePage onNavigate={handleNavigate} />}
@@ -261,9 +289,21 @@ const App = () => {
         {currentPage === 'other-auctions' && <OtherAuctionsPage onNavigate={handleNavigate} />}
         
         {currentPage === 'faq' && <FAQPage onNavigate={handleNavigate} />}
+        {currentPage === 'faq-en' && <FAQPageEn onNavigate={handleNavigate} />}
         {currentPage === 'support' && <SupportPage onNavigate={handleNavigate} />}
+        {currentPage === 'support-en' && <SupportPageEn onNavigate={handleNavigate} />}
         {currentPage === 'privacy-policy' && <PrivacyPolicyPage onNavigate={handleNavigate} />}
+        {currentPage === 'residential-rent' && <ResidentialRentPage onNavigate={handleNavigate} />}
+        {currentPage === 'riyadh-rent' && <RiyadhRentPage onNavigate={handleNavigate} onPropertyClick={handlePropertyClick} />}
+        {currentPage === 'rent-property-details' && (
+          <RentPropertyDetailsPage 
+            property={selectedProperty} 
+            onBack={() => setCurrentPage('riyadh-rent')} 
+            onNavigate={handleNavigate}
+          />
+        )}
         {currentPage === 'terms' && <TermsPage onNavigate={handleNavigate} />}
+        {currentPage === 'terms-en' && <TermsPageEn onNavigate={handleNavigate} />}
         {currentPage === 'advertisers' && <AdvertisersPage />}
         {currentPage === 'city-sale' && <CitySalePage cityId={selectedCity} onPropertyClick={handlePropertyClick} onNavigate={handleNavigate} />}
         {currentPage === 'riyadh-sale' && <CitySalePage cityId="riyadh" onPropertyClick={handlePropertyClick} onNavigate={handleNavigate} />}
@@ -290,8 +330,11 @@ const App = () => {
         {currentPage === 'training' && <TrainingPage />}
         {currentPage === 'my-requests' && <RequestsPage onNavigate={handleNavigate} />}
         {currentPage === 'create-request' && <CreateRequestPage onNavigate={handleNavigate} />}
+        {currentPage === 'plans' && <PlansPage onNavigate={handleNavigate} />}
+        {currentPage === 'plans-en' && <PlansPageEn onNavigate={handleNavigate} />}
         {currentPage === 'careers' && <CareersPage />}
         {currentPage === 'login' && <LoginPage onNavigate={handleNavigate} onLogin={() => setIsLoggedIn(true)} />}
+        {currentPage === 'login-en' && <LoginPageEn onNavigate={handleNavigate} onLogin={() => setIsLoggedIn(true)} />}
         {currentPage === 'signup' && <SignupPage onNavigate={handleNavigate} />}
         {currentPage === 'nafath-login' && <NafathLoginPage onNavigate={handleNavigate} />}
         {currentPage === 'nafath-verification' && <NafathVerificationPage onNavigate={handleNavigate} />}
@@ -300,23 +343,34 @@ const App = () => {
           <ReportAdIssuePage 
             property={selectedProperty} 
             onBack={() => setCurrentPage('property-details')} 
+            onNavigate={handleNavigate}
           />
         )}
         {currentPage === 'report-complaint' && (
           <ReportComplaintPage 
             property={selectedProperty} 
             onBack={() => setCurrentPage('property-details')} 
+            onNavigate={handleNavigate}
           />
         )}
       </main>
 
-      {currentPage !== 'login' && <Footer onNavigate={handleNavigate} />}
+      {currentPage !== 'login' && currentPage !== 'login-en' && (
+        isEnglish ? (
+          <FooterEn onNavigate={handleNavigate} />
+        ) : (
+          <Footer onNavigate={handleNavigate} />
+        )
+      )}
 
       {/* --- AI ASSISTANT WIDGET --- */}
       <SmartAdvisor 
         isOpen={isChatOpen}
         onOpen={() => setIsChatOpen(true)}
         onClose={() => setIsChatOpen(false)}
+        isLoggedIn={isLoggedIn}
+        onOpenLogin={() => setShowLogin(true)}
+        isEnglish={currentPage.endsWith('-en')}
       />
 
       <CookieConsent />

@@ -14,6 +14,8 @@ import {
   Car,
   Package
 } from 'lucide-react';
+import personImage from 'figma:asset/12e4927068bfa4d6d7d02d08e05baa6297fe91f3.png';
+import auctionImage from 'figma:asset/9e185068aed0ec71a303c8b7e7720bfe7568bc93.png';
 
 interface AddAuctionPageProps {
   onNavigate?: (page: string) => void;
@@ -51,11 +53,11 @@ export const AddAuctionPage: React.FC<AddAuctionPageProps> = ({ onNavigate }) =>
   };
 
   return (
-    <div className="pt-36 pb-20 min-h-screen bg-[#F8FAFC]" dir="rtl">
-      <div className="container mx-auto px-4 max-w-3xl">
+    <div className="pt-40 pb-10 md:pt-48 md:pb-20 min-h-screen bg-[#F8FAFC]" dir="rtl">
+      <div className="container mx-auto px-4 max-w-5xl">
         
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4 md:mb-8">
            <div className="flex items-center gap-4">
             <button 
                 onClick={handleBack}
@@ -68,7 +70,7 @@ export const AddAuctionPage: React.FC<AddAuctionPageProps> = ({ onNavigate }) =>
         </div>
 
         {/* Progress Steps */}
-        <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 mb-8">
+        <div className="bg-white rounded-3xl p-4 md:p-8 shadow-sm border border-gray-100 mb-6 md:mb-8">
           <div className="relative flex justify-between px-4">
             {/* Progress Bar Line */}
             <div className="absolute top-[22px] left-10 right-10 h-[3px] bg-gray-100 -z-0">
@@ -114,56 +116,102 @@ export const AddAuctionPage: React.FC<AddAuctionPageProps> = ({ onNavigate }) =>
                 <p className="text-gray-500">حدد آلية المزايدة المناسبة لأصلك</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {[
-                  { id: 'public', label: 'مزاد علني', desc: 'متاح للجميع والمزايدة مباشرة' },
-                  { id: 'sealed', label: 'ظرف مغلق', desc: 'العروض سرية وتفتح في وقت محدد' },
-                  { id: 'private', label: 'مزاد خاص', desc: 'للمدعوين فقط برابط خاص' },
-                ].map((type) => (
-                  <button
-                    key={type.id}
-                    onClick={() => setFormData({ ...formData, type: type.id })}
-                    className={`p-6 rounded-2xl border-2 transition-all flex flex-col items-center text-center gap-3 h-full ${
-                      formData.type === type.id
-                        ? 'border-[#40C1C7] bg-teal-50/50 ring-2 ring-[#40C1C7]/20'
-                        : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
-                    }`}
-                  >
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
-                      formData.type === type.id ? 'bg-[#40C1C7] text-white' : 'bg-gray-100 text-gray-500'
-                    }`}>
-                      <Gavel size={24} />
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Left side - Image Section with Animation */}
+                <div className="hidden md:block relative">
+                  <div className="relative bg-white">
+                    {/* Person Image */}
+                    <div className="relative p-6">
+                      <img 
+                        src={auctionImage} 
+                        alt="مستشار مزادات" 
+                        className="w-full h-auto relative z-10"
+                      />
+                      
+                      {/* Floating Icons with Animation */}
+                      <div className="absolute top-12 left-8 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float">
+                        <Gavel size={28} className="text-[#47CCD0]" />
+                      </div>
+                      
+                      <div className="absolute top-24 right-8 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float-delay-1">
+                        <Clock size={28} className="text-[#47CCD0]" />
+                      </div>
+                      
+                      <div className="absolute bottom-32 left-12 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float-delay-2">
+                        <DollarSign size={28} className="text-[#47CCD0]" />
+                      </div>
+                      
+                      <div className="absolute bottom-24 right-12 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float-delay-3">
+                        <ShieldCheck size={28} className="text-[#47CCD0]" />
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-gray-900">{type.label}</h3>
-                      <p className="text-xs text-gray-400 mt-2 leading-relaxed">{type.desc}</p>
-                    </div>
-                  </button>
-                ))}
-              </div>
+                  </div>
+                </div>
 
-              <div className="mt-8 border-t border-gray-100 pt-6">
-                 <label className="block text-sm font-bold text-gray-900 mb-4">تصنيف الأصل</label>
-                 <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-                    {[
-                      { id: 'real-estate', label: 'عقارات', icon: <Building2 size={18} /> },
-                      { id: 'cars', label: 'مركبات', icon: <Car size={18} /> },
-                      { id: 'other', label: 'أصول أخرى', icon: <Package size={18} /> },
-                    ].map((cat) => (
-                      <button
-                        key={cat.id}
-                        onClick={() => setFormData({ ...formData, category: cat.id })}
-                        className={`flex items-center gap-2 px-6 py-3 rounded-xl border transition-all whitespace-nowrap ${
-                          formData.category === cat.id
-                            ? 'border-[#40C1C7] bg-[#40C1C7] text-white shadow-lg shadow-teal-500/20'
-                            : 'border-gray-200 text-gray-600 hover:border-gray-300'
-                        }`}
-                      >
-                        {cat.icon}
-                        <span className="font-bold text-sm">{cat.label}</span>
-                      </button>
-                    ))}
-                 </div>
+                {/* Right side - Options */}
+                <div className="space-y-8">
+                   {/* Auction Types */}
+                   <div className="space-y-4">
+                       <h3 className="text-lg font-bold text-gray-900">نوع المزاد</h3>
+                       <div className="grid grid-cols-1 gap-4">
+                          {[
+                            { id: 'public', label: 'مزاد علني', desc: 'متاح للجميع والمزايدة مباشرة' },
+                            { id: 'sealed', label: 'ظرف مغلق', desc: 'العروض سرية وتفتح في وقت محدد' },
+                            { id: 'private', label: 'مزاد خاص', desc: 'للمدعوين فقط برابط خاص' },
+                          ].map((type) => (
+                            <button
+                              key={type.id}
+                              onClick={() => setFormData({ ...formData, type: type.id })}
+                              className={`flex items-center gap-4 p-4 rounded-2xl border-2 transition-all text-right group ${
+                                formData.type === type.id
+                                  ? 'border-[#40C1C7] bg-teal-50/50 ring-2 ring-[#40C1C7]/20'
+                                  : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
+                              }`}
+                            >
+                              <div className={`w-14 h-14 flex-shrink-0 rounded-full flex items-center justify-center transition-colors ${
+                                formData.type === type.id ? 'bg-[#40C1C7] text-white' : 'bg-gray-100 text-gray-500'
+                              }`}>
+                                <Gavel size={24} />
+                              </div>
+                              <div className="flex-1">
+                                <h4 className="font-bold text-gray-900 group-hover:text-[#47CCD0] transition-colors">{type.label}</h4>
+                                <p className="text-sm text-gray-400">{type.desc}</p>
+                              </div>
+                              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                                  formData.type === type.id ? 'border-[#47CCD0]' : 'border-gray-300'
+                              }`}>
+                                  {formData.type === type.id && <div className="w-3 h-3 bg-[#47CCD0] rounded-full" />}
+                              </div>
+                            </button>
+                          ))}
+                       </div>
+                   </div>
+
+                   {/* Categories */}
+                   <div className="space-y-4">
+                       <h3 className="text-lg font-bold text-gray-900">تصنيف الأصل</h3>
+                       <div className="flex flex-wrap gap-3">
+                          {[
+                            { id: 'real-estate', label: 'عقارات', icon: <Building2 size={18} /> },
+                            { id: 'cars', label: 'مركبات', icon: <Car size={18} /> },
+                            { id: 'other', label: 'أصول أخرى', icon: <Package size={18} /> },
+                          ].map((cat) => (
+                            <button
+                              key={cat.id}
+                              onClick={() => setFormData({ ...formData, category: cat.id })}
+                              className={`flex items-center gap-2 px-5 py-3 rounded-xl border transition-all ${
+                                formData.category === cat.id
+                                  ? 'border-[#40C1C7] bg-[#40C1C7] text-white shadow-lg shadow-teal-500/20'
+                                  : 'border-gray-200 text-gray-600 hover:border-[#40C1C7] hover:text-[#40C1C7]'
+                              }`}
+                            >
+                              {cat.icon}
+                              <span className="font-bold text-sm">{cat.label}</span>
+                            </button>
+                          ))}
+                       </div>
+                   </div>
+                </div>
               </div>
             </div>
           )}
@@ -176,25 +224,50 @@ export const AddAuctionPage: React.FC<AddAuctionPageProps> = ({ onNavigate }) =>
                 <p className="text-gray-500">وصف دقيق للأصل المعروض للمزاد</p>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">عنوان المزاد</label>
-                  <input 
-                    type="text" 
-                    placeholder="مثال: أرض تجارية حي الملقا"
-                    className="w-full h-14 bg-gray-50 border border-gray-200 rounded-xl px-4 focus:border-[#40C1C7] focus:ring-4 focus:ring-[#40C1C7]/10 transition-all outline-none"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  />
+              <div className="grid md:grid-cols-2 gap-8 items-start">
+                {/* Left side - Image */}
+                <div className="hidden md:block">
+                  <div className="relative bg-white rounded-3xl p-8">
+                    <img 
+                      src={personImage} 
+                      alt="مستشار مزادات" 
+                      className="w-full h-auto rounded-2xl"
+                    />
+                    <div className="mt-6 bg-gray-50 rounded-2xl p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-[#47CCD0] rounded-full flex items-center justify-center">
+                          <ShieldCheck size={20} className="text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-bold text-gray-900 text-sm">التحقق من الهوية</p>
+                          <p className="text-xs text-gray-500">موثق ومعتمد من المنصة</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Upload Area */}
-                <div className="border-2 border-dashed border-gray-300 rounded-3xl p-8 text-center hover:bg-gray-50 transition-colors cursor-pointer group">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 mx-auto mb-4 group-hover:bg-[#40C1C7] group-hover:text-white transition-all">
-                    <Upload size={28} />
+                {/* Right side - Form */}
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-bold text-gray-900 mb-2">عنوان المزاد</label>
+                    <input 
+                      type="text" 
+                      placeholder="مثال: أرض تجارية حي الملقا"
+                      className="w-full h-14 bg-gray-50 border border-gray-200 rounded-xl px-4 focus:border-[#40C1C7] focus:ring-4 focus:ring-[#40C1C7]/10 transition-all outline-none"
+                      value={formData.title}
+                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    />
                   </div>
-                  <h3 className="font-bold text-gray-900">صور ومستندات الأصل</h3>
-                  <p className="text-gray-500 text-xs mt-1">PNG, JPG, PDF حتى 10 ميجابايت</p>
+
+                  {/* Upload Area */}
+                  <div className="border-2 border-dashed border-gray-300 rounded-3xl p-8 text-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 mx-auto mb-4 group-hover:bg-[#40C1C7] group-hover:text-white transition-all">
+                      <Upload size={28} />
+                    </div>
+                    <h3 className="font-bold text-gray-900">صور ومستندات الأصل</h3>
+                    <p className="text-gray-500 text-xs mt-1">PNG, JPG, PDF حتى 10 ميجابايت</p>
+                  </div>
                 </div>
               </div>
             </div>

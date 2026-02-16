@@ -199,7 +199,7 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
                            <Globe size={16} />
                         </div>
                      </div>
-                     <p className="text-xs text-gray-500 leading-relaxed">ستشارك في جميع المزادات.</p>
+                     <p className="text-xs text-gray-500 leading-relaxed">ستشارك في جميع المزادات، تطبق شروط وأحكام الهيئة العامة للعقار</p>
                   </div>
                 </label>
               </div>

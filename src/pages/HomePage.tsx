@@ -48,15 +48,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
   ];
 
   const partners = [
-    { name: "العقارية الأولى", image: "https://ui-avatars.com/api/?name=Aqaria+First&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "مساكن المستقبل", image: "https://ui-avatars.com/api/?name=Masaken&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "إعمار نجد", image: "https://ui-avatars.com/api/?name=Emaar+Najd&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "أصول القابضة", image: "https://ui-avatars.com/api/?name=Osool&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "دار الأركان", image: "https://ui-avatars.com/api/?name=Dar+Arkan&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "الماجدية", image: "https://ui-avatars.com/api/?name=Majdia&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "روشن", image: "https://ui-avatars.com/api/?name=Roshn&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "رتال", image: "https://ui-avatars.com/api/?name=Retal&background=f3f4f6&color=40C1C7&size=128&bold=true" },
-    { name: "مفاتيح", image: "https://ui-avatars.com/api/?name=Keys&background=f3f4f6&color=40C1C7&size=128&bold=true" },
+    { name: "العقارية الأولى", image: "https://ui-avatars.com/api/?name=Aqaria+First&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "مساكن المستقبل", image: "https://ui-avatars.com/api/?name=Masaken&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "إعمار نجد", image: "https://ui-avatars.com/api/?name=Emaar+Najd&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "أصول القابضة", image: "https://ui-avatars.com/api/?name=Osool&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "دار الأركان", image: "https://ui-avatars.com/api/?name=Dar+Arkan&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "الماجدية", image: "https://ui-avatars.com/api/?name=Majdia&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "روشن", image: "https://ui-avatars.com/api/?name=Roshn&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "رتال", image: "https://ui-avatars.com/api/?name=Retal&background=f3f4f6&color=47CCD0&size=128&bold=true" },
+    { name: "مفاتيح", image: "https://ui-avatars.com/api/?name=Keys&background=f3f4f6&color=47CCD0&size=128&bold=true" },
   ];
 
   const services = [
@@ -161,10 +161,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
       <section className="py-24 bg-white mt-12 lg:mt-0">
         <div className="w-full max-w-[1440px] mx-auto px-4">
           <div className="text-center mb-16 max-w-2xl mx-auto">
-            <span className="text-[#40C1C7] text-sm uppercase tracking-widest mb-3 block">تصفح حسب الفئة</span>
+            <span className="text-[#47CCD0] text-sm uppercase tracking-widest mb-3 block">تصفح حسب الفئة</span>
             <h2 className="text-3xl md:text-4xl text-black mb-4">ما الذي تبحث عنه؟</h2>
             <div className="h-1.5 w-20 bg-gray-100 mx-auto rounded-full">
-              <div className="h-full w-1/2 bg-[#40C1C7] rounded-full"></div>
+              <div className="h-full w-1/2 bg-[#47CCD0] rounded-full"></div>
             </div>
           </div>
 
@@ -179,13 +179,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                       onNavigate?.('auctions');
                     }
                   }}
-                  className="group p-8 rounded-2xl bg-white border border-gray-200 hover:border-[#40C1C7] hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 cursor-pointer text-center"
+                  className="group p-8 rounded-2xl bg-white border border-gray-200 hover:border-[#47CCD0] hover:shadow-xl hover:shadow-[#47CCD0]/5 transition-all duration-300 cursor-pointer text-center"
                >
-                  <div className="w-16 h-16 mx-auto rounded-xl bg-gray-50 flex items-center justify-center mb-6 text-gray-400 shadow-sm group-hover:bg-[#40C1C7] group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                  <div className="w-16 h-16 mx-auto rounded-xl bg-[#F8FAFB] flex items-center justify-center mb-6 text-gray-400 shadow-sm group-hover:bg-[#47CCD0] group-hover:text-white transition-all duration-300 group-hover:scale-110">
                     <cat.icon size={32} strokeWidth={1.5} />
                   </div>
                   <h3 className="text-lg text-gray-900 mb-2">{cat.name}</h3>
-                  <p className="text-sm text-gray-500 group-hover:text-[#40C1C7] transition-colors">{cat.count} عقار</p>
+                  <p className="text-sm text-gray-500 group-hover:text-[#47CCD0] transition-colors">{cat.count} عقار</p>
                </div>
              ))}
           </div>
@@ -219,7 +219,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                 <div className="flex justify-between items-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <div className="text-right">
                     <h3 className="text-lg text-white mb-1">{ad.title}</h3>
-                    <p className="text-[#40C1C7] text-xs flex items-center gap-1">
+                    <p className="text-[#47CCD0] text-xs flex items-center gap-1">
                       <MapPin size={12} /> {ad.location}
                     </p>
                   </div>
@@ -229,7 +229,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                       e.stopPropagation();
                       onNavigate?.('luxury-auction-details');
                     }}
-                    className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-4 py-1.5 rounded-full text-xs hover:bg-[#40C1C7] hover:border-[#40C1C7] transition-all flex items-center gap-1.5"
+                    className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-4 py-1.5 rounded-full text-xs hover:bg-[#47CCD0] hover:border-[#47CCD0] transition-all flex items-center gap-1.5"
                   >
                     التفاصيل <ArrowUpLeft size={12} />
                   </button>
@@ -241,25 +241,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
       </section>
 
       {/* --- SERVICES SECTION --- */}
-      <section className="py-20 bg-gray-50/50">
+      <section className="py-20 bg-[#F8FAFB]">
         <div className="w-full max-w-[1440px] mx-auto px-4">
            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Title Card */}
-              <div className="bg-black text-white p-10 rounded-2xl flex flex-col justify-center relative overflow-hidden group h-full min-h-[400px]">
+              <div className="bg-[#2B3D50] text-white p-10 rounded-2xl flex flex-col justify-center relative overflow-hidden group h-full min-h-[400px]">
                  <div className="absolute inset-0 z-0">
                     <img 
                       src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000&auto=format&fit=crop" 
                       alt="Business Handshake" 
                       className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700 filter grayscale hover:grayscale-0" 
                     />
-                    <div className="absolute inset-0 bg-black/50"></div>
+                    <div className="absolute inset-0 bg-[#2B3D50]/80"></div>
                  </div>
 
-                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#40C1C7] rounded-full blur-[100px] opacity-20 group-hover:opacity-30 transition-opacity z-10"></div>
+                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#47CCD0] rounded-full blur-[100px] opacity-20 group-hover:opacity-30 transition-opacity z-10"></div>
                  <div className="relative z-20">
                    <h2 className="text-3xl mb-4">خدماتنا المتكاملة</h2>
-                   <p className="text-gray-400 mb-8 group-hover:text-gray-200 transition-colors">نقدم باقة شاملة من الخدمات العقارية التي تلبي احتياجات الأفراد والشركات والقطاعات الحكومية.</p>
-                   <button className="flex items-center gap-2 text-[#40C1C7] hover:gap-4 transition-all">
+                   <p className="text-gray-300 mb-8 group-hover:text-white transition-colors">نقدم باقة شاملة من الخدمات العقارية التي تلبي احتياجات الأفراد والشركات والقطاعات الحكومية.</p>
+                   <button className="flex items-center gap-2 text-[#47CCD0] hover:gap-4 transition-all">
                      عرض جميع الخدمات <ArrowUpLeft size={18} />
                    </button>
                  </div>
@@ -268,7 +268,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
               {/* Service Cards */}
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {services.map((srv, i) => (
-                  <div key={i} className="bg-white rounded-2xl border border-gray-200 hover:border-[#40C1C7] hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 group overflow-hidden flex flex-col h-full">
+                  <div key={i} className="bg-white rounded-2xl border border-gray-200 hover:border-[#47CCD0] hover:shadow-xl hover:shadow-[#47CCD0]/10 transition-all duration-300 group overflow-hidden flex flex-col h-full">
                      <div className="h-48 w-full relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity"></div>
                         <img 
@@ -279,7 +279,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                      </div>
                      
                      <div className="p-8 pt-0 flex-1 flex flex-col relative">
-                       <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center text-[#40C1C7] mb-4 group-hover:scale-110 transition-transform relative z-20 -mt-7 shadow-md border border-gray-50">
+                       <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center text-[#47CCD0] mb-4 group-hover:scale-110 transition-transform relative z-20 -mt-7 shadow-md border border-gray-50">
                          <srv.icon size={28} />
                        </div>
                        
@@ -298,13 +298,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
         <div className="w-full max-w-[1440px] mx-auto px-4">
            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
               <div>
-                <span className="text-[#40C1C7] text-sm uppercase tracking-widest mb-2 block">فرص حصرية</span>
+                <span className="text-[#47CCD0] text-sm uppercase tracking-widest mb-2 block">فرص حصرية</span>
                 <h2 className="text-3xl text-black">أحدث المزادات</h2>
               </div>
               
               {/* Filter Tabs */}
-              <div className="flex bg-gray-100 p-1.5 rounded-xl">
-                <button className="px-6 py-2 rounded-lg bg-black text-white text-sm shadow-md">الكل</button>
+              <div className="flex bg-[#F8FAFB] p-1.5 rounded-xl">
+                <button className="px-6 py-2 rounded-lg bg-[#2B3D50] text-white text-sm shadow-md">الكل</button>
                 <button className="px-6 py-2 rounded-lg text-gray-500 text-sm hover:text-black transition-colors">عقاري</button>
                 <button className="px-6 py-2 rounded-lg text-gray-500 text-sm hover:text-black transition-colors">صناعي</button>
               </div>
@@ -339,7 +339,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
 
                       {/* Map Button */}
                       <button className="absolute bottom-4 left-4 z-20 flex items-center gap-2 bg-black/20 hover:bg-white backdrop-blur-md border border-white/20 px-3 py-2 rounded-lg text-white hover:text-black transition-all duration-300 group/map">
-                        <MapPin size={16} className="group-hover/map:text-[#40C1C7] transition-colors" />
+                        <MapPin size={16} className="group-hover/map:text-[#47CCD0] transition-colors" />
                         <span className="text-xs">عرض على الخريطة</span>
                       </button>
                    </div>
@@ -347,10 +347,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                    {/* Content */}
                    <div className="p-6">
                       <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-lg text-gray-900 group-hover:text-[#40C1C7] transition-colors line-clamp-1">{item.title}</h3>
+                        <h3 className="text-lg text-gray-900 group-hover:text-[#47CCD0] transition-colors line-clamp-1">{item.title}</h3>
                       </div>
                       <p className="text-gray-500 text-sm flex items-center gap-2 mb-5">
-                        <MapPin size={16} className="text-[#40C1C7]" /> {item.location}
+                        <MapPin size={16} className="text-[#47CCD0]" /> {item.location}
                       </p>
                       
                       {/* Meta */}
@@ -359,7 +359,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                           <User size={16} className="text-gray-400" />
                           <span>{item.bidders} مزايد</span>
                         </div>
-                        <div className="flex items-center gap-2 text-[#40C1C7] text-xs font-mono bg-teal-50 px-2 py-1 rounded-lg">
+                        <div className="flex items-center gap-2 text-[#F39C12] text-xs font-mono bg-[#FFF8E1] px-2 py-1 rounded-lg">
                           <Timer size={14} />
                           <span>{item.timeLeft}</span>
                         </div>
@@ -367,7 +367,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                       
                       <button 
                         onClick={() => onNavigate?.('auction-details')}
-                        className="w-full mt-5 py-3 rounded-xl border border-gray-300 text-gray-700 hover:bg-black hover:text-white hover:border-black transition-all duration-300 text-sm"
+                        className="w-full mt-5 py-3 rounded-xl border border-gray-300 text-gray-700 hover:bg-[#2B3D50] hover:text-white hover:border-[#2B3D50] transition-all duration-300 text-sm"
                       >
                         عرض التفاصيل
                       </button>
@@ -377,7 +377,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
            </div>
 
            <div className="mt-16 text-center">
-             <button className="px-10 py-4 bg-gray-100 text-gray-900 rounded-xl hover:bg-[#40C1C7] hover:text-white transition-all duration-300">
+             <button className="px-10 py-4 bg-[#F8FAFB] text-gray-900 rounded-xl hover:bg-[#47CCD0] hover:text-white transition-all duration-300">
                عرض جميع المزادات
              </button>
            </div>
@@ -385,35 +385,35 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
       </section>
 
       {/* --- APP CTA --- */}
-      <section className="bg-[#111] text-white py-24 relative overflow-hidden">
+      <section className="bg-[#2B3D50] text-white py-24 relative overflow-hidden">
          {/* Background Image */}
          <div className="absolute inset-0 z-0">
            <img 
              src={appBgImage} 
              alt="Background" 
-             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+             className="w-full h-full object-cover opacity-10 mix-blend-overlay"
            />
-           <div className="absolute inset-0 bg-gradient-to-r from-[#111] via-transparent to-[#111]"></div>
+           <div className="absolute inset-0 bg-gradient-to-r from-[#2B3D50] via-transparent to-[#2B3D50]"></div>
          </div>
 
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#40C1C7] rounded-full blur-[150px] opacity-10 translate-x-1/2 -translate-y-1/2"></div>
+         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#47CCD0] rounded-full blur-[150px] opacity-10 translate-x-1/2 -translate-y-1/2"></div>
          
          <div className="w-full max-w-[1440px] mx-auto px-4 relative z-10">
            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
               <div className="lg:w-1/2 text-center lg:text-right lg:pr-16">
-                <span className="text-[#40C1C7] tracking-widest uppercase text-sm mb-4 block">تطبيق مزادات</span>
+                <span className="text-[#47CCD0] tracking-widest uppercase text-sm mb-4 block">تطبيق مزادات</span>
                 <h2 className="text-4xl md:text-5xl mb-6 font-bold text-white">مزاداتك في جيبك، <br/>أين ما كنت.</h2>
-                <p className="text-gray-400 text-lg mb-10 max-w-md mx-auto lg:mx-0">حمل التطبيق الآن لتحصل على تنبيهات فورية لأحدث الفرص الاستثمارية، وشارك في المزادات بكل سهولة.</p>
+                <p className="text-gray-300 text-lg mb-10 max-w-md mx-auto lg:mx-0">حمل التطبيق الآن لتحصل على تنبيهات فورية لأحدث الفرص الاستثمارية، وشارك في المزادات بكل سهولة.</p>
                 
                 <div className="flex justify-center lg:justify-start gap-4">
-                  <button className="flex items-center gap-3 bg-white text-black px-6 py-3 rounded-xl hover:bg-[#40C1C7] hover:text-white transition-all group shadow-lg shadow-white/10">
+                  <button className="flex items-center gap-3 bg-white text-[#2B3D50] px-6 py-3 rounded-xl hover:bg-[#47CCD0] hover:text-white transition-all group shadow-lg shadow-white/10">
                     <div className="text-right">
                       <p className="text-[10px] uppercase opacity-60">Download on</p>
                       <p className="text-lg leading-none">App Store</p>
                     </div>
                     <Smartphone size={28} className="group-hover:scale-110 transition-transform" />
                   </button>
-                  <button className="flex items-center gap-3 bg-transparent border border-gray-600 text-white px-6 py-3 rounded-xl hover:bg-white/10 transition-all hover:border-white">
+                  <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-3 rounded-xl hover:bg-white/10 transition-all hover:border-white">
                      <div className="text-right">
                       <p className="text-[10px] uppercase opacity-60">Get it on</p>
                       <p className="text-lg leading-none">Google Play</p>
@@ -428,7 +428,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                  <div className="relative">
                     <div className="w-[300px] h-[600px] bg-black border-[12px] border-gray-800 rounded-[2.5rem] shadow-2xl relative z-10 flex flex-col items-center overflow-hidden transform -rotate-12 hover:rotate-0 transition-transform duration-500 ease-out cursor-pointer group">
                        <div className="w-32 h-6 bg-black rounded-b-2xl absolute top-0 z-20"></div>
-                       <div className="w-full h-full bg-gray-50 flex flex-col pt-12 px-4 pb-4 group-hover:bg-white transition-colors overflow-hidden">
+                       <div className="w-full h-full bg-[#F8FAFB] flex flex-col pt-12 px-4 pb-4 group-hover:bg-white transition-colors overflow-hidden">
                           {/* App Header */}
                           <div className="flex justify-between items-center mb-4 px-1">
                              <Menu size={20} className="text-gray-800" />
@@ -447,7 +447,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                                 <div className="flex-1">
                                    <h4 className="text-xs text-gray-900 mb-1">فيلا مودرن بالرياض</h4>
                                    <p className="text-[10px] text-gray-500 flex items-center gap-1 mb-1"><MapPin size={10}/> حي الملقا</p>
-                                   <p className="text-xs text-[#40C1C7] flex items-center gap-1">
+                                   <p className="text-xs text-[#47CCD0] flex items-center gap-1">
                                     2,500,000 
                                     <img src={sarCurrency} alt="ر.س" className="h-3 w-auto inline-block opacity-70" />
                                    </p>
@@ -463,7 +463,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                                 <div className="flex-1">
                                    <h4 className="text-xs text-gray-900 mb-1">أرض تجارية بجدة</h4>
                                    <p className="text-[10px] text-gray-500 flex items-center gap-1 mb-1"><MapPin size={10}/> طريق الملك</p>
-                                   <p className="text-xs text-[#40C1C7] flex items-center gap-1">
+                                   <p className="text-xs text-[#47CCD0] flex items-center gap-1">
                                     1,850,000
                                     <img src={sarCurrency} alt="ر.س" className="h-3 w-auto inline-block opacity-70" />
                                    </p>
@@ -479,7 +479,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
                                 <div className="flex-1">
                                    <h4 className="text-xs text-gray-900 mb-1">مجمع سكني بالخبر</h4>
                                    <p className="text-[10px] text-gray-500 flex items-center gap-1 mb-1"><MapPin size={10}/> العزيزية</p>
-                                   <p className="text-xs text-[#40C1C7] flex items-center gap-1">
+                                   <p className="text-xs text-[#47CCD0] flex items-center gap-1">
                                     5,200,000
                                     <img src={sarCurrency} alt="ر.س" className="h-3 w-auto inline-block opacity-70" />
                                    </p>
@@ -489,15 +489,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenChat, cursorPosition, 
 
                           {/* App Bottom Nav */}
                           <div className="bg-white border-t border-gray-100 pt-3 pb-1 px-4 flex justify-between items-center text-gray-400">
-                             <Home size={20} className="text-[#40C1C7]" />
+                             <Home size={20} className="text-[#47CCD0]" />
                              <Search size={20} />
                              <Heart size={20} />
                              <User size={20} />
                           </div>
                        </div>
                     </div>
-                    <div className="absolute -z-10 top-20 -right-20 w-72 h-72 bg-gray-800 rounded-full opacity-50 blur-2xl"></div>
-                    <div className="absolute -z-10 bottom-10 -left-10 w-40 h-40 bg-[#40C1C7] rounded-full blur-3xl opacity-40 animate-pulse"></div>
+                    <div className="absolute -z-10 top-20 -right-20 w-72 h-72 bg-[#2B3D50] rounded-full opacity-50 blur-2xl"></div>
+                    <div className="absolute -z-10 bottom-10 -left-10 w-40 h-40 bg-[#47CCD0] rounded-full blur-3xl opacity-40 animate-pulse"></div>
                  </div>
               </div>
            </div>

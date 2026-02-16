@@ -13,6 +13,7 @@ import {
   AlertCircle,
   Upload
 } from 'lucide-react';
+import personImage from 'figma:asset/12e4927068bfa4d6d7d02d08e05baa6297fe91f3.png';
 
 interface AddAdPageProps {
   onNavigate?: (page: string) => void;
@@ -56,11 +57,11 @@ export const AddAdPage: React.FC<AddAdPageProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="pt-36 pb-20 min-h-screen bg-[#F8FAFC]" dir="rtl">
-      <div className="container mx-auto px-4 max-w-3xl">
+    <div className="pt-40 pb-10 md:pt-48 md:pb-20 min-h-screen bg-[#F8FAFC]" dir="rtl">
+      <div className="container mx-auto px-4 max-w-5xl">
         
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4 md:mb-8">
            <div className="flex items-center gap-4">
             <button 
                 onClick={handleBack}
@@ -73,7 +74,7 @@ export const AddAdPage: React.FC<AddAdPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* Progress Steps */}
-        <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 mb-8">
+        <div className="bg-white rounded-3xl p-4 md:p-8 shadow-sm border border-gray-100 mb-6 md:mb-8">
           <div className="relative flex justify-between px-4">
             {/* Progress Bar Line */}
             <div className="absolute top-[22px] left-10 right-10 h-[3px] bg-gray-100 -z-0">
@@ -119,28 +120,62 @@ export const AddAdPage: React.FC<AddAdPageProps> = ({ onNavigate }) => {
                 <p className="text-gray-500">حدد نوع السلعة أو العقار الذي تود الإعلان عنه</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                {categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setFormData({ ...formData, category: cat.id })}
-                    className={`p-6 rounded-2xl border-2 transition-all flex flex-col items-center text-center gap-3 ${
-                      formData.category === cat.id
-                        ? 'border-[#40C1C7] bg-teal-50/50 ring-2 ring-[#40C1C7]/20'
-                        : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
-                    }`}
-                  >
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-colors ${
-                      formData.category === cat.id ? 'bg-[#40C1C7] text-white' : 'bg-gray-100 text-gray-500'
-                    }`}>
-                      {cat.icon}
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Left side - Image Section with Animation */}
+                <div className="hidden md:block relative">
+                  <div className="relative bg-white">
+                    {/* Person Image */}
+                    <div className="relative p-6">
+                      <img 
+                        src={personImage} 
+                        alt="مستشار مزادات" 
+                        className="w-full h-auto relative z-10"
+                      />
+                      
+                      {/* Floating Category Icons with Animation */}
+                      <div className="absolute top-12 left-8 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float">
+                        <Car size={28} className="text-[#47CCD0]" />
+                      </div>
+                      
+                      <div className="absolute top-24 right-8 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float-delay-1">
+                        <Building2 size={28} className="text-[#47CCD0]" />
+                      </div>
+                      
+                      <div className="absolute bottom-32 left-12 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float-delay-2">
+                        <Package size={28} className="text-[#47CCD0]" />
+                      </div>
+                      
+                      <div className="absolute bottom-24 right-12 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float-delay-3">
+                        <Camera size={28} className="text-[#47CCD0]" />
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-gray-900">{cat.label}</h3>
-                      <p className="text-sm text-gray-400 mt-1">{cat.desc}</p>
-                    </div>
-                  </button>
-                ))}
+                  </div>
+                </div>
+
+                {/* Right side - Category Selection */}
+                <div className="grid grid-cols-2 gap-4">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setFormData({ ...formData, category: cat.id })}
+                      className={`p-6 rounded-2xl border-2 transition-all flex flex-col items-center text-center gap-3 hover:scale-105 ${
+                        formData.category === cat.id
+                          ? 'border-[#40C1C7] bg-teal-50/50 ring-2 ring-[#40C1C7]/20 scale-105'
+                          : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
+                      }`}
+                    >
+                      <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-colors ${
+                        formData.category === cat.id ? 'bg-[#40C1C7] text-white' : 'bg-gray-100 text-gray-500'
+                      }`}>
+                        {cat.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg text-gray-900">{cat.label}</h3>
+                        <p className="text-sm text-gray-400 mt-1">{cat.desc}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           )}
@@ -244,7 +279,7 @@ export const AddAdPage: React.FC<AddAdPageProps> = ({ onNavigate }) => {
 
               <div className="bg-blue-50 text-blue-800 p-4 rounded-xl flex gap-3 text-sm">
                 <AlertCircle size={20} className="flex-shrink-0" />
-                <p>يجب أن تكون الصور خالية من الشعارات المائية وأرقام التواصل. ��لحد الأقصى 10 صور.</p>
+                <p>يجب أن تكون الصور خالية من الشعارات المائية وأرقام التواصل. لحد الأقصى 10 صور.</p>
               </div>
             </div>
           )}

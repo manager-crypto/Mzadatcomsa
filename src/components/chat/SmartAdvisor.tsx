@@ -27,17 +27,22 @@ interface SmartAdvisorProps {
   onOpen: () => void;
   isLoggedIn?: boolean;
   onOpenLogin?: () => void;
+  isEnglish?: boolean;
 }
 
-export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onOpen, isLoggedIn = false, onOpenLogin = () => {} }) => {
+export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onOpen, isLoggedIn = false, onOpenLogin = () => {}, isEnglish = false }) => {
   const [messages, setMessages] = useState<Message[]>([
     { 
       id: '1', 
       role: 'model', 
-      text: 'مرحباً بك في مزادات! 🏠 أنا مساعدك الذكي. كيف يمكنني خدمتك اليوم؟', 
+      text: isEnglish 
+        ? 'Welcome to Auctions! 🏠 I am your smart assistant. How can I help you today?' 
+        : 'مرحباً بك في مزادات! 🏠 أنا مساعدك الذكي. كيف يمكنني خدمتك اليوم؟', 
       timestamp: new Date(),
       type: 'options',
-      options: ['بحث عن عقار', 'استفسار عن مزاد', 'كيفية التسجيل', 'تواصل مع الدعم']
+      options: isEnglish 
+        ? ['Search for property', 'Auction inquiry', 'How to register', 'Contact support']
+        : ['بحث عن عقار', 'استفسار عن مزاد', 'كيفية التسجيل', 'تواصل مع الدعم']
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -52,6 +57,24 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
     scrollToBottom();
   }, [messages, isOpen]);
 
+  // Update initial message when language changes
+  useEffect(() => {
+    setMessages([
+      { 
+        id: '1', 
+        role: 'model', 
+        text: isEnglish 
+          ? 'Welcome to Auctions! 🏠 I am your smart assistant. How can I help you today?' 
+          : 'مرحباً بك في مزادات! 🏠 أنا مساعدك الذكي. كيف يمكنني خدمتك اليوم؟', 
+        timestamp: new Date(),
+        type: 'options',
+        options: isEnglish 
+          ? ['Search for property', 'Auction inquiry', 'How to register', 'Contact support']
+          : ['بحث عن عقار', 'استفسار عن مزاد', 'كيفية التسجيل', 'تواصل مع الدعم']
+      }
+    ]);
+  }, [isEnglish]);
+
   const generateResponse = (userText: string) => {
     setIsTyping(true);
     
@@ -61,19 +84,19 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
 
     const lowerText = userText.toLowerCase();
 
-    if (lowerText.includes('بحث') || lowerText.includes('عقار')) {
-      responseText = 'يمكنني مساعدتك في البحث عن عقارات. ما هو نوع العقار الذي تبحث عنه؟';
-      responseOptions = ['أراضي سكنية', 'فلل', 'عقارات تجارية', 'شقق'];
-    } else if (lowerText.includes('مزاد')) {
-      responseText = 'لدينا العديد من المزادات النشطة حالياً. يمكنك تصفح صفحة المزادات لرؤية التفاصيل. هل تود معرفة كيفية المشاركة؟';
-      responseOptions = ['نعم، كيف أشارك؟', 'عرض المزادات الحالية'];
-    } else if (lowerText.includes('تسجيل') || lowerText.includes('حساب')) {
-      responseText = 'التسجيل في منصة مزادات سهل وبسيط. يمكنك النقر على أيقونة المستخدم في القائمة العلوية واختيار "إنشاء حساب". ستحتاج إلى رقم الهوية وتفعيل النفاذ الوطني.';
-    } else if (lowerText.includes('دعم') || lowerText.includes('مس��عدة')) {
-      responseText = 'فريق الدعم لدينا متواجد لخدمتك على مدار الساعة. يمكنك الاتصال بنا أو ترك رسالة هنا.';
+    if (lowerText.includes('بحث') || lowerText.includes('عقار') || lowerText.includes('search') || lowerText.includes('property')) {
+      responseText = isEnglish ? 'I can help you search for properties. What type of property are you looking for?' : 'يمكنني مساعدتك في البحث عن عقارات. ما هو نوع العقار الذي تبحث عنه؟';
+      responseOptions = isEnglish ? ['Residential Land', 'Villas', 'Commercial Properties', 'Apartments'] : ['أراضي سكنية', 'فلل', 'عقارات تجارية', 'شقق'];
+    } else if (lowerText.includes('مزاد') || lowerText.includes('auction')) {
+      responseText = isEnglish ? 'We have many active auctions currently. You can browse the Auctions page to see the details. Do you want to know how to participate?' : 'لدينا العديد من المزادات النشطة حالياً. يمكنك تصفح صفحة المزادات لرؤية التفاصيل. هل تود معرفة كيفية المشاركة؟';
+      responseOptions = isEnglish ? ['Yes, how do I participate?', 'Show current auctions'] : ['نعم، كيف أشارك؟', 'عرض المزادات الحالية'];
+    } else if (lowerText.includes('تسجيل') || lowerText.includes('حساب') || lowerText.includes('register') || lowerText.includes('account')) {
+      responseText = isEnglish ? 'Registering on the Auctions platform is easy and simple. You can click on the user icon in the top menu and choose "Create Account". You will need an ID number and activate the national e-payment.' : 'التسجيل في منصة مزادات سهل وبسيط. يمكنك النقر على أيقونة المستخدم في القائمة العلوية واختيار "إنشاء حساب". ستحتاج إلى رقم الهوية وتفعيل النفاذ الوطني.';
+    } else if (lowerText.includes('دعم') || lowerText.includes('مسعدة') || lowerText.includes('support') || lowerText.includes('help')) {
+      responseText = isEnglish ? 'Our support team is available to serve you around the clock. You can contact us or leave a message here.' : 'فريق الدعم لدينا متواجد لخدمتك على مدار الساعة. يمكنك الاتصال بنا أو ترك رسالة هنا.';
     } else {
-      responseText = 'شكراً لاستفسارك. سأقوم بتحويل طلبك للمختصين أو يمكنك الاختيار من القائمة أدناه.';
-      responseOptions = ['بحث عن عقار', 'استفسار عن مزاد', 'المساعدة'];
+      responseText = isEnglish ? 'Thank you for your inquiry. I will forward your request to the experts or you can choose from the menu below.' : 'شكراً لاستفسارك. سأقوم بتحويل طلبك للمختصين أو يمكنك الاختيار من القائمة أدناه.';
+      responseOptions = isEnglish ? ['Search for Property', 'Ask about Auction', 'Help'] : ['بحث عن عقار', 'استفسار عن مزاد', 'المساعدة'];
     }
 
     setTimeout(() => {
@@ -137,7 +160,7 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
           className="fixed bottom-24 left-6 z-[100] group flex items-center gap-3 px-5 py-3 rounded-full shadow-xl bg-[#B54B48] text-white hover:bg-[#a04240] transition-all duration-300 animate-fade-up hover:-translate-y-1"
         >
           <span className="text-sm font-bold hidden md:block">
-            تحدث معنا
+            {isEnglish ? 'Chat with us' : 'تحدث معنا'}
           </span>
           <MessageSquareText size={24} />
         </a>
@@ -147,7 +170,7 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
           className="fixed bottom-6 left-6 z-[100] group flex items-center gap-3 px-5 py-4 rounded-full shadow-2xl bg-[#40C1C7] text-white hover:bg-[#2daeb4] transition-all duration-300 animate-fade-up"
         >
           <span className="text-sm font-bold hidden md:block">
-            اسأل مستشارنا الذكي
+            {isEnglish ? 'Ask our Smart Advisor' : 'اسأل مستشارنا الذكي'}
           </span>
           <Sparkles size={24} className="animate-pulse" />
         </button>
@@ -165,10 +188,10 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
             <Bot size={24} />
           </div>
           <div>
-            <h4 className="font-bold">مستشار مزادات</h4>
+            <h4 className="font-bold">{isEnglish ? 'Auctions Advisor' : 'مستشار مزادات'}</h4>
             <div className="flex items-center gap-1.5 opacity-90">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse border border-white/50"></span>
-              <span className="text-xs">متصل الآن</span>
+              <span className="text-xs">{isEnglish ? 'Online now' : 'متصل الآن'}</span>
             </div>
           </div>
         </div>
@@ -218,7 +241,7 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
               )}
               
               <span className="text-[10px] text-gray-400 block px-1 opacity-70">
-                {msg.timestamp.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' })}
+                {msg.timestamp.toLocaleTimeString(isEnglish ? 'en-US' : 'ar-SA', { hour: '2-digit', minute: '2-digit' })}
               </span>
             </div>
 
@@ -250,7 +273,7 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-            placeholder="اكتب استفسارك هنا..." 
+            placeholder={isEnglish ? 'Type your question here...' : 'اكتب استفسارك هنا...'} 
             className="flex-1 bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-[#40C1C7] focus:ring-1 focus:ring-[#40C1C7] transition-all"
             disabled={isTyping}
           />
@@ -266,7 +289,7 @@ export const SmartAdvisor: React.FC<SmartAdvisorProps> = ({ isOpen, onClose, onO
         <div className="text-center mt-3">
           <p className="text-[10px] text-gray-400 flex items-center justify-center gap-1.5 bg-gray-50 py-1 px-3 rounded-full w-fit mx-auto">
             <Sparkles size={10} className="text-[#40C1C7]" />
-            مدعوم بالذكاء الاصطناعي للإجابة على استفساراتك
+            {isEnglish ? 'Powered by AI to answer your questions' : 'مدعوم بالذكاء الاصطناعي للإجابة على استفساراتك'}
           </p>
         </div>
       </div>
